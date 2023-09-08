@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div>
+      <span id="master">哈喽，这里是主iframe</span>
+    </div>
+    <iframe
+      name="virtualChild"
+      id="virtualChild"
+      src="./virtualChild.html"
+      frameborder="0"
+      style="height: 100%"
+    ></iframe>
+    <!-- <script defer src="./defer.js"></script>
+    <script async src="./async.js"></script> -->
+    <script type="text/javascript" charset="utf-8">
+      // console.log(window)
+      // window.onload = function () {
+      //   console.log('我才是最慢的啦')
+      // }
+      // function person(name,phone) {
+      //   this.name = name
+      //   this.phone = phone
+      // }
+      // var per = new person('lisa','110')
+      // console.log(person);
+      // console.log(person.prototype);
+      // console.log(Object);
+      // console.log(Object.prototype);
+      // console.log(person.__proto__ === Function.prototype);
+
+      // 调用iframe子页面
+      // let virtualChild = document.querySelector('#virtualChild')
+      // console.log(virtualChild);
+      // console.log(virtualChild.contentWindow);
+      // virtualChild.contentWindow.postMessage('来自主页面的调用','http://127.0.0.1:5173/virtuarlist')
+
+      // JSBridge例子
+      // function initJSBridge() {
+      //   console.log('进来了')
+      //   if (window.JSBridge) {
+      //     return
+      //   }
+      //   // 创建JSBridge对象
+      //   window.JSBridge = {
+      //     showNativePopup: function (message) {
+      //       alert(message)
+      //     }
+      //   }
+      // }
+      // initJSBridge()
+
+      // console.log(window.JSBridge)
+
+      // var jsbridge = {
+      //   setPostMessage: function () {
+      //     console.log('发送一个请求')
+      //   }
+      // }
+
+      // var clickEvent = new Event('click')
+      // document.dispatchEvent(clickEvent)
+
+      // console.log(window.JSBridge);
+      // document.addEventListener('click', function () {
+      //   // 调用JSBridge中的showNativePopup方法
+      //   if (window.JSBridge && typeof window.JSBridge.showNativePopup === 'function') {
+      //     window.JSBridge.showNativePopup('Hello from H5!')
+      //   } else {
+      //     alert('JSBridge 或 showNativePopup 方法未定义。')
+      //   }
+      // })
+      // let array = [1, 2, 3]
+      // console.log(Array.isArray(array));
+      // console.log(array instanceof Array);
+      // console.log(array.constructor === Array);
+      // console.log(Object.prototype.toString.call(array));
+      // console.log(Object.prototype.toString.call(null));
+      // console.log(Object.prototype.toString.call(undefined));
+      // 数组常用方法
+      // let arr = [1,2,3]
+      // console.log(arr.toString());
+      /**
+       * map
+       * shift
+       * unshift
+       * push
+       * pop
+       * toString
+       * split
+       * splice
+       * some
+       * every
+       * foreach
+       * for
+       * for...of
+       * sort
+       * join
+       * findIndex
+       * concat
+       * isArray
+       * reduce
+       * filter
+       */
+      // js this指向
+      //  1.执行上下文
+      //  this === window
+
+      //  2.箭头函数
+      //  this是上层作用域的对象
+
+      //  3.函数内部
+      //  分两种情况：严格模式、非严格模式
+      //  严格模式：this === undefined
+      //  非严格模式：this === window
+
+      //  4.对象
+      //  对象作用域内对应的对象
+
+      //  5.构造函数
+      //  实例对象传入的this
+
+      // var name = '...'
+
+      // function newParent(name) {
+      //   this.name = name
+      //   parent()
+      // }
+      // var newparent = new newParent('111')
+
+      // let child = {
+      //   name: '???',
+      //   parent: function () {
+      //     console.log(this.name)
+      //   }
+      // }
+      // function parent() {
+      //   console.log(this)
+      // }
+      // parent()
+      // // newparent.parent()
+      // child.parent()
+
+      // const obj = {
+      //   name: 'Alice',
+      //   sayHello: function () {
+      //     setTimeout(function () {
+      //       console.log(`Hello, ${this.name}!`) // this.name 将是 undefined
+      //     }.bind(this),1000)
+      //   }
+      // }
+      // obj.sayHello()
+
+      // const obj = {
+      //   name: 'Alice',
+      //   sayHello: () => {
+      //     console.log(this);
+      //   }
+      // }
+      // obj.sayHello()
+      // console.log(obj.value);
+
+      // var callceshi = function () {
+      //   console.log(callceshi.caller)
+      // }
+      // function a() {
+      //   callceshi()
+      // }
+      // a() //输出function a() {callerTest();}
+      // callceshi()
+      let arr = '1231231122'
+      let par = [...new Set(arr)].toString()
+      console.log(arr);
+      console.log(par);
+
+    </script>
+  </body>
+</html>

@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 发布-订阅者模式
+      class NewsWebsite {
+        constructor() {
+          this.subscribers = {}
+        }
+        // 发布
+        publishArticle(category, article) {
+          if (this.subscribers[category]) {
+            let list = this.subscribers[category]
+            for (var data of list) {
+              data.notify(article)
+            }
+          }
+        }
+        // 订阅
+        subscribe(category, article) {
+          if (!this.subscribers[category]) {
+            this.subscribers[category] = []
+          }
+          this.subscribers[category].push(article)
+        }
+      }
+
+      // 用户
+      class User {
+        constructor(name) {
+          this.name = name
+        }
+        notify(content) {
+          console.log(content)
+        }
+      }
+
+      // 创建实例
+      var newsWebsite = new NewsWebsite()
+      var user1 = new User('张三')
+      var user2 = new User('李四')
+
+      // 订阅
+      newsWebsite.subscribe('张三', user1)
+      newsWebsite.subscribe('李四', user2)
+
+      // 创建一个document点击事件
+      var clickEvent = new Event('click')
+      document.dispatchEvent(clickEvent)
+
+      document.addEventListener('click', function () {
+        console.log('页面被点击了---发布')
+        // 发布
+        newsWebsite.publishArticle('张三', '这是张三接收到的信息')
+        newsWebsite.publishArticle('李四', '这是李四接收到的信息')
+      })
+    </script>
+  </body>
+</html>

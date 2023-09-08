@@ -1,0 +1,29 @@
+{
+  "files": [],
+  "references": [
+    {
+      "path": "./tsconfig.node.json"
+    },
+    {
+      "path": "./tsconfig.app.json"
+    }
+  ],
+  "compilerOptions": {
+    "target": "esnext",             // 编译目标版本
+    "module": "esnext",             // 模块系统
+    "strict": true,                 // 启用严格类型检查
+    "jsx": "preserve",              // 处理 JSX
+    "esModuleInterop": true,        // 支持 CommonJS 和 ES 模块互操作性
+    "moduleResolution": "node",    // 模块解析方式
+    "baseUrl": "./",               // 基本路径
+    "paths": {
+      "@/*": ["src/*"],              // 路径别名
+      "@router/*": ["src/router/*"]
+    },
+    "resolveJsonModule": true,      // 支持解析 JSON 模块
+    "isolatedModules": true,        // 启用更严格的文件间隔离模式
+    "noEmit": true                 // 不生成编译结果
+  },
+  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"],
+  "exclude": ["node_modules"]
+}

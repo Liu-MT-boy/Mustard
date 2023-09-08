@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 观察者模式
+        class NewObserve {
+            constructor() {
+                this.temperature = 0
+                this.observeList = []
+            }
+
+            // 观察到变化
+            observeChange(temperature) {
+                if(this.observeList.length > 0) {
+                    for(var observe of this.observeList) {
+                        observe.postMessage(temperature)
+                    }
+                }
+            }
+            // 添加观察者
+            addObserve(observe) {
+                this.observeList.push(observe)
+            }
+        }
+
+        // 观察者
+        class User {
+            constructor(temperature) {
+                this.temperature = temperature
+            }
+
+            // 观察变化回调
+            postMessage(message) {
+                if(message !== this.temperature) {
+                    console.log(message);
+                }
+            }
+        }
+
+        // 创建实例
+        var newObserve = new NewObserve()
+        var user1 = new User(0)
+        var user2 = new User(0)
+
+        // 添加观察者
+        newObserve.addObserve(user1)
+        newObserve.addObserve(user2)
+
+        // 创建document点击事件
+        var clickEvent = new Event("click")
+        document.dispatchEvent(clickEvent)
+
+        document.addEventListener('click',function() {
+            // 模拟检测到温度变化
+            newObserve.observeChange(30)
+        })
+
+    </script>
+</body>
+</html>
